@@ -1,4 +1,5 @@
-Django
-psycopg2>=2.8
+Django==4.2.1
 pytest
 pytest-django
+joblib==1.2.0
+djangorestframework==3.14.0
