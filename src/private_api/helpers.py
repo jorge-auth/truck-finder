@@ -5,8 +5,8 @@ from private_api.models import (
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
-from joblib import dump
+from joblib import dump, load
+
 
 def populate_clusters():
     for i in range(11):
@@ -31,7 +31,11 @@ def preprocessing_and_populate_trucks():
     food_trucks_df['cluster'] = kmeans.fit_predict(coordinates_scaled)
     import sys
     print(sys.path)
+
+
     dump(kmeans, './src/private_api/kmeans_model/kmeans_model.joblib')
+    dump(scaler, './src/private_api/kmeans_model/scaler.joblib')
+
 
     #Load the trucks in the database
     for index, row in food_trucks_df.iterrows():
@@ -43,8 +47,7 @@ def preprocessing_and_populate_trucks():
 
         cluster_id = kmeans.predict(input_coords_scaled)[0]
         C_i, created = Cluster.objects.get_or_create(
-            cluster_id=cluster_id, 
-            #defaults={'other_field': 'value'}
+            cluster_id=cluster_id,
         )
         
         for index, row in food_trucks_df.iterrows():
@@ -60,3 +63,15 @@ def preprocessing_and_populate_trucks():
             )
         
         print("Food truck loading complete!")
+
+def get_cluster_id(latitude, longitude):
+    kmeans_model = load('./src/private_api/kmeans_model/kmeans_model.joblib')
+    scaler = load('./src/private_api/kmeans_model/scaler.joblib')
+    
+    # Standardize the input coordinates using the same 
+    input_coords_scaled = scaler.transform([[latitude, longitude]])
+
+    # Predict the cluster for the input coordinates
+    cluster_id = kmeans_model.predict(input_coords_scaled)[0]
+
+    return cluster_id

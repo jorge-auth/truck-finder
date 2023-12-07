@@ -1,3 +1,7 @@
-from django.urls import path, re_path
+from django.urls import path
+from .views import FoodTruckListView
 
-urlpatterns = []
+urlpatterns = [
+    path('foodtrucks/', FoodTruckListView.as_view(), name='foodtruck-list'),
+    # Add more URLs as needed
+]

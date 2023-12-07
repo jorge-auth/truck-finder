@@ -43,10 +43,12 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-LOCAL_APPS = ['private_api']
-THIRD_PARTY = []
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS #+ THIRD_PARTY
+LOCAL_APPS = ['private_api']
+
+THIRD_PARTY = ['rest_framework']
+
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +61,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'configurations.urls'
+
+
 
 TEMPLATES = [
     {
@@ -81,6 +85,13 @@ WSGI_APPLICATION = 'configurations.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
 
 """
 DATABASES = {
