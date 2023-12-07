@@ -4,6 +4,11 @@ Install the dependencies from the file "requirements.txt"
 
     pip install -r requirements.txt
 
+Place a .env file in the folder with similar content
+
+    SECRET_KEY='django-insecure-bzvvo=%8keouni+9c!0t@=i=6(3tv$1b6i2kwtb4%#*2$7*l77'
+    DEBUG=True
+    ALLOWED_HOSTS='*'
 
 Run the migrations,
 
