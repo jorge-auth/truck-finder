@@ -1,0 +1,57 @@
+[
+{
+  "model": "private_api.cluster",
+  "pk": 0,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 1,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 2,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 3,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 4,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 5,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 6,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 7,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 8,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 9,
+  "fields": {}
+},
+{
+  "model": "private_api.cluster",
+  "pk": 10,
+  "fields": {}
+}
+]
