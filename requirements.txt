@@ -1,5 +1,5 @@
 Django==4.2.1
-pytest
-pytest-django
+pytest==7.4.3
+pytest-django==4.7.0
 joblib==1.2.0
 djangorestframework==3.14.0
