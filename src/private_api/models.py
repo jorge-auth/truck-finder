@@ -28,8 +28,8 @@ class FoodTruck(models.Model):
     lot = models.CharField(max_length=10)
     permit = models.CharField(max_length=20)
     Received = models.IntegerField()
-    ExpirationDate = models.CharField()
-    Location = models.CharField()
+    ExpirationDate = models.CharField(max_length=30)
+    Location = models.CharField(max_length=30)
     Latitude = models.FloatField()
     Longitude = models.FloatField()
     
