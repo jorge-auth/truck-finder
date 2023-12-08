@@ -8,6 +8,8 @@ from private_api.serializers import FoodTruckSerializer
 from private_api.helpers import get_cluster_id
 
 from sklearn.neighbors import KDTree
+from private_api.validators import validate_latitude_longitude
+from rest_framework.exceptions import ValidationError
 
 
 class FoodTruckListView(APIView):
@@ -17,6 +19,10 @@ class FoodTruckListView(APIView):
         lon = request.query_params.get('lon', None)
 
         # Validate lat and lon, perform necessary checks
+        try:
+            validate_latitude_longitude(float(lat), float(lon))
+        except ValidationError as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
         # Assuming you have a method to filter FoodTrucks based on lat and lon
         food_trucks = self.filter_food_trucks(lat, lon)
