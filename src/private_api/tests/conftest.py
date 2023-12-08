@@ -1,14 +1,14 @@
 """
-Cluster 0: Latitude=37.77591696106071, Longitude=-122.39756316353638
+Cluster 0: Latitude=37.80241110316494, Longitude=-122.41259339277755
 Cluster 1: Latitude=7.105427357601002e-15, Longitude=0.0
-Cluster 2: Latitude=37.74467675458272, Longitude=-122.39364247793189
-Cluster 3: Latitude=37.791238783114615, Longitude=-122.40143218491829
-Cluster 4: Latitude=37.72497262795293, Longitude=-122.3885875484275
-Cluster 5: Latitude=37.765054046592766, Longitude=-122.41975509125709
-Cluster 6: Latitude=37.779184251736304, Longitude=-122.42766432637215
-Cluster 7: Latitude=37.75719129289442, Longitude=-122.39208176059284
-Cluster 8: Latitude=37.71913561680847, Longitude=-122.4543245119097
-Cluster 9: Latitude=37.752150988160466, Longitude=-122.48698213502519
+Cluster 2: Latitude=37.74718888247515, Longitude=-122.39304783134442
+Cluster 3: Latitude=37.789315814706065, Longitude=-122.40019236610871
+Cluster 4: Latitude=37.725249754901505, Longitude=-122.38795321520844
+Cluster 5: Latitude=37.77062614623407, Longitude=-122.40266639908815
+Cluster 6: Latitude=37.71952167367456, Longitude=-122.4461494198286
+Cluster 7: Latitude=37.74992665491735, Longitude=-122.49071288760086
+Cluster 8: Latitude=37.77969139100502, Longitude=-122.43060395085435
+Cluster 9: Latitude=37.76065070721035, Longitude=-122.41216043239612
 """
 import pytest
 from private_api.helpers import get_cluster_id
@@ -20,8 +20,8 @@ def get_cluster_id_obj():
 
 @pytest.fixture
 def coord0():
-    lat = 37.77591696106071
-    lon=-122.39756316353638
+    lat = 37.80241110316494
+    lon = -122.41259339277755
     return (lat, lon)
 
 @pytest.fixture
@@ -32,48 +32,48 @@ def coord1():
 
 @pytest.fixture
 def coord2():
-    lat = 37.74467675458272
-    lon = -122.39364247793189
+    lat = 37.74718888247515
+    lon = -122.39304783134442
     return (lat, lon)
 
 @pytest.fixture
 def coord3():
-    lat = 37.791238783114615
-    lon = -122.40143218491829
+    lat = 37.789315814706065
+    lon = -122.40019236610871
     return (lat, lon)
 
 @pytest.fixture
 def coord4():
-    lat = 37.72497262795293
-    lon = -122.3885875484275
+    lat = 37.725249754901505
+    lon = -122.38795321520844
     return (lat, lon)
 
 @pytest.fixture
 def coord5():
-    lat = 37.765054046592766
-    lon = -122.41975509125709
+    lat = 37.77062614623407
+    lon = -122.40266639908815
     return (lat, lon)
 
 @pytest.fixture
 def coord6():
-    lat = 37.779184251736304
-    lon = -122.42766432637215
+    lat = 37.71952167367456
+    lon = -122.4461494198286
     return (lat, lon)
 
 @pytest.fixture
 def coord7():
-    lat = 37.75719129289442
-    lon = -122.39208176059284
+    lat = 37.74992665491735
+    lon = -122.49071288760086
     return (lat, lon)
 
 @pytest.fixture
 def coord8():
-    lat = 37.71913561680847
-    lon = -122.4543245119097
+    lat = 37.77969139100502
+    lon = -122.43060395085435
     return (lat, lon)
 
 @pytest.fixture
 def coord9():
-    lat = 37.752150988160466
-    lon = -122.48698213502519
+    lat = 37.76065070721035
+    lon = -122.41216043239612
     return (lat, lon)

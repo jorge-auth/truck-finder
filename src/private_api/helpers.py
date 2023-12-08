@@ -49,18 +49,16 @@ def preprocessing_and_populate_trucks():
         C_i, created = Cluster.objects.get_or_create(
             cluster_id=cluster_id,
         )
-        
-        for index, row in food_trucks_df.iterrows():
-            # Create a FoodTruck instance for each row
-            food_truck_instance = FoodTruck.objects.get_or_create(
-                locationid = row["locationid"],
-                Applicant = row["Applicant"],
-                FacilityType = row["FacilityType"],
-                Address = row["Address"],
-                Latitude = row["Latitude"],
-                Longitude = row["Longitude"],
-                cluster=C_i,  # Link to the Cluster instance
-            )
+
+        food_truck_instance = FoodTruck.objects.get_or_create(
+            locationid = row["locationid"],
+            Applicant = row["Applicant"],
+            FacilityType = row["FacilityType"],
+            Address = row["Address"],
+            Latitude = row["Latitude"],
+            Longitude = row["Longitude"],
+            cluster=C_i,  # Link to the Cluster instance
+        )
         
         print("Food truck loading complete!")
 
@@ -75,3 +73,19 @@ def get_cluster_id(latitude, longitude):
     cluster_id = kmeans_model.predict(input_coords_scaled)[0]
 
     return cluster_id
+
+def print_cluster_lat_lon_from_model():
+
+    # Load the KMeans model and scaler
+    kmeans_model = load('./src/private_api/kmeans_model/kmeans_model.joblib')
+    scaler = load('./src/private_api/kmeans_model/scaler.joblib')
+
+    # Retrieve the cluster centers
+    cluster_centers_scaled = kmeans_model.cluster_centers_
+
+    # Inverse transform the scaled cluster centers to obtain original coordinates
+    cluster_centers_original = scaler.inverse_transform(cluster_centers_scaled)
+
+    # Print the result
+    for cluster_id, (latitude, longitude) in enumerate(cluster_centers_original):
+        print(f"Cluster {cluster_id}: Latitude={latitude}, Longitude={longitude}")
