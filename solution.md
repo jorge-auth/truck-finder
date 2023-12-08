@@ -1,31 +1,22 @@
-## Solution explanation
+## Solution Explanation
 
+I began by examining the challenge dataset and identified outlier data points, which I filtered out to focus on the central results.
 
-I started by studying the data provided in the challenge.
-Found outlier points of data that I filtered with the central results.
+Upon reviewing the exercise, I opted for a statistical approach to address the problem. While a symmetric dataset would have allowed for an equal division of the problem, I chose a two-fold strategy:
 
+1. **Model Creation with K-Means Algorithm:**
+   I employed the K-means algorithm to create a model that reduces the amount of data. I divided the data into 10 different regions, considering that there were 481 entry rows for training. The goal was to proportionally distribute the data, with approximately 48 points per cluster if the data were symmetrical.
 
-By inspection of the exercise I chose a statistical method to tackle the problem.
-If the data was simetric I could divide the problem in equal parts and define the regions where to search for a food truck in equal parts.
+2. **Database Storage and Querying:**
+   I stored the data in a database for improved data type treatment and querying. Each food truck was associated with a cluster ID for better organization and retrieval efficiency.
 
+3. **Live Algorithm for Finding 5 Closest Food Trucks:**
+   Initially considering a radix sort solution, I later opted for the KDTree, which proved effective for geographical coordinates. Despite a warning about its scalability for large samples due to data structure loading, its O(n*log(n)) time complexity made it a suitable choice.
 
-Instead I narrow the problem in 2 parts:
+In conclusion, I developed a model with K-means to classify regions where each food truck operates. For REST API requests, the code follows these steps:
 
-1) create a model using k-means algorithm to reduce the ammount of data.
-2) store the data in a database for better data type threatment and querying. with the cluster id associated to each food truck.
-3) use a live algorithm to find the 5 closest food trucks.
+- Identifies the cluster based on the latitude and longitude from the input arguments using the trained K-means model built with preprocessed data.
+- Filters the database to retrieve all objects corresponding to that area.
+- Finds and displays the 5 closest trucks.
 
-Point 1), I separate the data in 10 different regions. SInce there are 481 entry rows to train the data, 10 regions is proportional. In theory, if simmetrical, 48 points per cluster is considered reasonable quantity of data per cluster
-
-Point 3) I had in mind to use radix sort solution to find the 5 nearest neighbours to a certain latitude and longitude.
-THen with further research I chose to use the KDTree, which works well with geographical coordinates. Also it behaves with O(n*log(n)) time complexity which is close to ideal. with the warning that for big samples wouldnt be a better option because we have to load the data in a data structure.
-
-In conclusion I create a model with kmeans to classify the regions where each food truck stands.
-
-when requested per rest API, the code does the following steps:
-- identify the cluster from the latitude and longitude from the input args using the trained k-means model. Built with preprocessed data.
-- filter in the database all the objects that are correspondent to that area.
-- find the 5 closest trucks to display
-
-
-Checkout the Jupyter notebooks in the study folder.
+Please check out the Jupyter notebooks in the "study" folder for further details.
